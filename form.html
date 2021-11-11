@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+
+    <!-- My CSS -->
+    <link rel="stylesheet" type="text/css" href="login.css" />
+
+    <title>FORM REGISTRASI</title>
+    <!-- Jumbotron-->
+    <section class="jumbotron text-center">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+        <path
+          fill="#ffff"
+          fill-opacity="1"
+          d="M0,32L48,74.7C96,117,192,203,288,197.3C384,192,480,96,576,101.3C672,107,768,213,864,266.7C960,320,1056,320,1152,304C1248,288,1344,256,1392,240L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
+        ></path>
+      </svg>
+    </section>
+    <!-- Akhir Jumbotron-->
+  </head>
+  <body onload="focus_name()">
+    <div class="container">
+      <h4 class="text-center">Form Registrasi</h4>
+      <hr />
+      <form method="post" action="hasil.html" onsubmit="return cek_pass();">
+        <div class="form-group">
+          <input id="name" type="text" class="form-control" placeholder="Nama Lengkap" />
+          <br />
+        </div>
+        <div class="form-group">
+          <input id="email" type="email" class="form-control" placeholder="Email" />
+          <br />
+        </div>
+        <div class="form-group">
+          <input id="password" type="password" class="form-control" placeholder="Password" />
+          <br />
+        </div>
+        <div class="form-group">
+          <input id="retype_password" type="password" class="form-control" placeholder="Retype Password" />
+          <br />
+        </div>
+        <button type="submit" class="btn btn-primary custom">Submit</button><br />
+        <h7>
+          <a href="formlogin.html" style="text-decoration: none"><i>Saya sudah punya akun</i></a>
+        </h7>
+        <br />
+        <center><span id="message" style="color: red"></span></center>
+        <br />
+      </form>
+    </div>
+
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+      <path
+        fill="#FAEBD7"
+        fill-opacity="1"
+        d="M0,288L48,272C96,256,192,224,288,197.3C384,171,480,149,576,165.3C672,181,768,235,864,250.7C960,267,1056,245,1152,250.7C1248,256,1344,288,1392,304L1440,320L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
+      ></path>
+    </svg>
+    <script>
+      function focus_name() {
+        document.getElementById("name").focus();
+      }
+
+      function cek_pass() {
+        var password = document.getElementById("password").value;
+        var retype_password = document.getElementById("retype_password").value;
+        var nama = document.getElementById("name").value;
+        var email = document.getElementById("email").value;
+
+        if (nama == "") {
+          document.getElementById("message").innerHTML = "Nama Masih Kosong!";
+          return false;
+        }
+
+        if (email == "") {
+          document.getElementById("message").innerHTML = "Email Masih Kosong!";
+          return false;
+        }
+
+        if (password == "") {
+          document.getElementById("message").innerHTML = "Password masih kosong";
+          return false;
+        }
+
+        if (password.length < 8) {
+          document.getElementById("message").innerHTML = "Password Kurang dari 8 karakter";
+          return false;
+        }
+
+        if (password != retype_password) {
+          document.getElementById("message").innerHTML = "Password tidak sesuai";
+          return false;
+        }
+      }
+
+      var inputname = document.getElementById("name");
+      var inputemail = document.getElementById("email");
+      var inputpassword = document.getElementById("password");
+      inputname.addEventListener("keyup", function (event) {
+        if (event.keyCode === 13) {
+          event.preventDefault(true);
+          document.getElementById("email").focus();
+        }
+      });
+
+      inputemail.addEventListener("keyup", function (event) {
+        if (event.keyCode === 13) {
+          event.preventDefault();
+          document.getElementById("password").focus();
+        }
+      });
+
+      inputpassword.addEventListener("keyup", function (event) {
+        if (event.keyCode === 13) {
+          event.preventDefault();
+          document.getElementById("retype_password").focus();
+        }
+      });
+    </script>
+  </body>
+</html>
